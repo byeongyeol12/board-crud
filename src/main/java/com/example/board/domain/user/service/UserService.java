@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
@@ -33,21 +34,32 @@ public class UserService {
         return userMapper.toDto(user);
     }
 
-    public UserDto findUser(){
-        return null;
+
+    public UserDto findUser(UUID id){
+        UserDto userDto = userRepository.findByIdAndIsDeletedFalse(id)
+                .map(userMapper::toDto)
+                .orElseThrow(() -> new IllegalArgumentException("해당 유저를 찾을 수 없습니다"));
+                return userDto;
     }
 
-    public List<UserDto> findAllUser(){
-        return null;
+
+    public List<UserDto> findAllUser(UUID id){
+        List<UserDto> userDtos = userRepository.findAllByIsDeletedFalse().stream().map(userMapper::toDto).toList();
+
+        return userDtos;
+
     }
+
 
     public UserDto update(){
         return null;
     }
 
+
     public void softDelete(){
 
     }
+
 
     public void hardDelete(){
 
