@@ -33,4 +33,12 @@ public class User extends BaseUpdatableEntity {
         this.nickname = nickname;
     }
 
+    public void update(String newNickname){
+        this.nickname = newNickname;
+    }
+
+    public void softDelete(){
+        this.isDeleted = true;
+    }
+
 }
