@@ -65,7 +65,7 @@ public class UserController {
     }
 
 
-    @DeleteMapping(path = "/{pathId}/userId")
+    @DeleteMapping(path = "/{userId}/hard")
     public ResponseEntity<Void> hardDelete (@RequestHeader("header-id") UUID headerId,
                                             @PathVariable UUID userId) {
         log.info("사용자 물리 삭제 요청: userId={}, nickname={}", userId);
