@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import java.util.UUID;
 
 @Entity
+@Table(name = "posts")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Post extends BaseUpdatableEntity {

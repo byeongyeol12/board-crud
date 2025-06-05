@@ -25,9 +25,9 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserDto> create(
-            @Validated(ValidationSequence.class) @RequestBody UserRequest userRequest){
-            log.info("사용자 생성 요청: email={}, nickname={}", userRequest.email(), userRequest.nickname());
-            UserDto UserDto = userService.create(userRequest);
+            @Validated(ValidationSequence.class) @RequestBody UserRequest request){
+            log.info("사용자 생성 요청: email={}, nickname={}", request.email(), request.nickname());
+            UserDto UserDto = userService.create(request);
             return ResponseEntity
                     .status(HttpStatus.CREATED)
                     .body(UserDto);
