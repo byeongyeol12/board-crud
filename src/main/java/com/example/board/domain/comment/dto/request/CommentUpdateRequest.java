@@ -1,4 +1,9 @@
 package com.example.board.domain.comment.dto.request;
 
-public record CommentUpdateRequest() {
-}
+import jakarta.validation.constraints.NotBlank;
+
+public record CommentUpdateRequest (
+    @NotBlank(message = "댓글 내용은 필수입니다")
+    String content
+) {}
+
