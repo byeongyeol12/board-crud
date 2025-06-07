@@ -33,7 +33,7 @@ public class Comment extends BaseUpdatableEntity {
     private String content;
 
     @Column(name = "is_deleted", nullable = false)
-    private boolean isDeleted;
+    private boolean isDeleted = false;
 
 
     public Comment(User user, Post post, String content){
