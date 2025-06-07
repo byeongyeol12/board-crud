@@ -19,3 +19,15 @@ CREATE TABLE posts (
                        CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+CREATE TABLE comments (
+                          id UUID PRIMARY KEY,
+                          content TEXT NOT NULL,
+                          is_deleted BOOLEAN NOT NULL DEFAULT FALSE,
+                          post_id UUID NOT NULL,
+                          user_id UUID NOT NULL,
+                          created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+                          updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+                          CONSTRAINT fk_comments_post FOREIGN KEY (post_id) REFERENCES posts(id),
+                          CONSTRAINT fk_comments_user FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
